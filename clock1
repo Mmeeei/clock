@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>clock</title>
+    <style>
+        body{
+            background-image: url(./background/greenblue.jpg);
+            background-repeat: no-repeat;
+            background-attachment: fixed; 
+            background-size: cover;
+            
+        }
+        #clock{
+            width: 350px;
+            height: 350px;
+            border:5px dotted lightgrey;
+            border-radius: 50%;
+            position: relative;
+            margin: auto;
+            background-image: url(./background/rabody.png);
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center -10px; 
+        }
+        #circle12{
+            width: 7%;
+            height: 7%;
+            border-radius: 50% ;
+            background: Gainsboro;
+            position: absolute;
+            top:0%;
+            left:45%;
+            
+        }
+        #circle3{
+            width: 7%;
+            height: 7%;
+            border-radius: 50% ;
+            background: Gainsboro;
+            position: absolute;
+            top:50%;
+            right:-0%;
+        }
+        #circle6{
+            width: 7%;
+            height: 7%;
+            border-radius: 50% ;
+            background: Gainsboro;
+            position: absolute;
+            top:93%;
+            left:45%;
+            
+        }
+        #circle9{
+            width: 7%;
+            height: 7%;
+            border-radius: 50% ;
+            background: Gainsboro;
+            position: absolute;
+            top:50%;
+            left:0%;
+        }
+        
+        #hour{
+            height: 160px;
+            width: 160px;
+            /* background: #a3c5d1;  */
+            position: absolute;
+            top: 5%;
+            left: 14%; 
+            transform-origin: 100 100; 
+            
+            background-image: url(./background/right.png);
+            background-size: contain;
+            background-repeat: no-repeat;
+            /* transform-origin:top left; */
+            
+        }
+        #minute{
+            height: 160px;
+            width: 160px;
+            /* background:Linen; */
+            position: absolute;
+            top: 13%;
+            left: 45%;
+            transform-origin: 100 100 ; 
+            
+            background-image: url(./background/left.png);
+            background-size: contain;
+            background-repeat: no-repeat;
+            /* transform-origin:top left; */
+        }
+        #second{
+            height: 3px;
+            width: 48%;
+            background: Silver;
+            position: absolute;
+            top: 50%;
+            left: 0%;
+            transform-origin: right center;
+            
+        }
+        #time{
+            text-align: center;
+            font-size: 50px;
+            font-family: 'High Tower Text';
+            /* color: #646b71; */
+            color:#ffecd2;
+            text-shadow: black 0.1em 0.1em 0.2em;
+        }
+    </style>
+</head>
+<body>
+    <div id="clock">
+        <div id="circle12"></div>
+        <div id="circle3"></div>
+        <div id="circle6"></div>
+        <div id="circle9"></div>
+        <div id="hour"></div>
+        <div id="minute"></div>
+        <div id="second"></div>
+    </div>
+    <br>
+    <div id="time"></div>
+    <script>
+        const hour = document.getElementById("hour");
+        const minute = document.getElementById("minute");
+        const second = document.getElementById("second");
+        setInterval(updatetime,1000);
+
+        function updatetime(){        
+            let date = new Date();  // 每一秒都要抓當下的時間
+            let h = date.getHours();
+            let m = date.getMinutes();
+            let s = date.getSeconds();
+            hour.style.transform = `rotate( ${h*30+90}deg )`;
+            minute.style.transform = `rotate( ${m*6+90}deg )`;
+            second.style.transform = `rotate( ${s*6+90}deg )`;
+            document.getElementById("time").innerHTML= `${h}:${m}:${s}`;
+        }
+
+        updatetime();
+    </script>
+</body>
+</html>
